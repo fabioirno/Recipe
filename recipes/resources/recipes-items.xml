@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- ~ [y] hybris Platform ~ ~ Copyright (c) 2000-2016 SAP SE ~ All rights 
+	reserved. ~ ~ This software is the confidential and proprietary information 
+	of SAP ~ Hybris ("Confidential Information"). You shall not disclose such 
+	~ Confidential Information and shall use it only in accordance with the ~ 
+	terms of the license agreement you entered into with SAP Hybris. -->
+<!-- ATTENTION: This is just an example file. You have to edit it according 
+	to your needs. -->
+
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<enumtypes>
+
+		<enumtype code="DifficultyEnumeration" generate="true"
+			autocreate="true" dynamic="false">
+			<value code="easy">
+			</value>
+			<value code="medium">
+			</value>
+			<value code="difficult">
+			</value>
+		</enumtype>
+
+	</enumtypes>
+
+	<relations>
+
+		<relation code="Recipe2IngredientRelation" generate="true"
+			localized="false">
+			<deployment table ="Rec2IngRel" typecode="20400" />
+			<sourceElement type="Recipe" qualifier="recipes"
+				cardinality="many" />
+			<targetElement type="Ingredient" qualifier="ingredients"
+				cardinality="many" />
+		</relation>
+		
+		<relation code="Recipe2Chef" generate="true"
+			localized="false">
+			<deployment table ="Rec2Chef" typecode="20401" />
+			<sourceElement type="Recipe" qualifier="recipes"
+				cardinality="many" />
+			<targetElement type="Chef" qualifier="chefs"
+				cardinality="many" />
+		</relation>
+		
+	</relations>
+
+	<itemtypes>
+
+		<itemtype code="Recipe" autocreate="true" generate="true">
+			<deployment table="Recipe" typecode="12347" />
+			<attributes>
+
+				<attribute qualifier="code" type="java.lang.String">
+					<persistence type="property" />
+					<modifiers optional="false" unique="true" />
+				</attribute>
+				
+				<attribute qualifier="description" type="localized:java.lang.String">
+					<description>This is the description of the recipe</description>
+					<modifiers optional="false" />
+					<persistence type="property" />
+				</attribute>
+				
+				<attribute qualifier="difficulty" type="DifficultyEnumeration">
+					<description>The difficulty to do this recipe</description>
+					<modifiers optional="true" unique="false" />
+					<persistence type="property" />
+				</attribute>
+				
+				<attribute qualifier="method" type="localized:java.lang.String">
+					<description>This is the description of the recipe</description>
+					<modifiers optional="false" />
+					<persistence type="property" />
+				</attribute>
+
+				<attribute qualifier="name" type="localized:java.lang.String">
+					<description>Name of the recipe</description>
+					<modifiers optional="false" unique="true"  />
+					<persistence type="property" />
+				</attribute>
+				
+				<attribute qualifier="rating" type="java.lang.Integer">
+					<description>This is the raiting's chef</description>
+					<modifiers optional="true" unique="true"  />
+					<persistence type="property" />
+				</attribute>
+
+				<attribute qualifier="servings" type="java.lang.Integer">
+					<description>The number of person for this recipe</description>
+					<modifiers optional="false" />
+					<persistence type="property" />
+				</attribute>
+
+				<attribute qualifier="time" type="java.lang.Double">
+					<description>Time to do this recipe</description>
+					<modifiers optional="true" />
+					<persistence type="property" />
+				</attribute>
+				
+				<attribute qualifier="totalCals" type="java.lang.Double">
+					<description>This is the total of cals's recipe</description>
+					<persistence type="dynamic" attributeHandler="totalCalsAttributeHandler"/>
+					<modifiers write="false"  search="true"  />
+				</attribute>
+				
+
+			</attributes>
+
+		</itemtype>
+
+		<itemtype code="Food" extends="Product" autocreate="true"
+			generate="true">
+			<attributes>
+			
+				<attribute qualifier="kcal" type="java.lang.Double">
+					<description>Cals of this food</description>
+					<modifiers optional="true" />
+					<persistence type="property" />
+				</attribute>
+			
+				<attribute qualifier="isRaw" type="java.lang.Boolean">
+					<description>Check if the food is raw</description>
+					<modifiers optional="false" />
+					<persistence type="property" />
+				</attribute>			
+
+			</attributes>
+
+		</itemtype>
+
+		<itemtype code="Ingredient" autocreate="true" generate="true">
+			<deployment table="Ingredient" typecode="12348" />
+			<attributes>
+
+				<attribute qualifier="code" type="java.lang.String">
+					<persistence type="property" />
+					<modifiers optional="false" unique="true" />
+				</attribute>
+				
+				<attribute qualifier="food" type="Food">
+					<description>Check if the food is raw</description>
+					<modifiers optional="false" />
+					<persistence type="property" />
+				</attribute>
+				
+				<attribute qualifier="isFood" type="java.lang.Boolean">
+					<description>Check if the food is raw</description>
+					<modifiers optional="true" />
+					<persistence type="property" />
+				</attribute>
+								
+				<attribute qualifier="quantity" type="java.lang.Double">
+					<description>This is the description of the recipe</description>
+					<modifiers optional="true" unique="true"  />
+					<persistence type="property" />
+				</attribute>
+
+			</attributes>
+			
+		</itemtype>
+			
+			<itemtype code="Chef" extends="User" autocreate="true" generate="true">
+			 <!-- jaloclass="de.hybris.platform.jalo.user.Chef"> -->
+			<attributes>
+				
+				<!-- because the attribute address contains the attribute company
+				<attribute qualifier="restaurant" type="java.lang.String">
+					<description>This is the name of restaurant</description>
+					<modifiers optional="false" />
+					<persistence type="property" />
+				</attribute> -->  
+				
+				<attribute qualifier="address" type="Address">
+					<description>This is the address of restaurant where works the chef</description>
+					<modifiers optional="true" />
+					<persistence type="property" />
+				</attribute>	
+				
+				<attribute qualifier="rating" type="java.lang.Integer">
+					<description>This is the raiting's chef</description>
+					<modifiers optional="false" unique="true"  />
+					<persistence type="property" />
+				</attribute>
+				
+		</attributes>
+
+		</itemtype>
+
+	</itemtypes>
+</items>

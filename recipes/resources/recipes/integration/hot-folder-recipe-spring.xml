@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:file="http://www.springframework.org/schema/integration/file"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration
+	http://www.springframework.org/schema/integration/spring-integration.xsd
+	http://www.springframework.org/schema/integration/file
+	http://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+
+
+	<!-- Config a base directory -->
+	<bean id="baseDirectoryRecipes" class="java.lang.String">
+		<constructor-arg value="#{baseDirectory}/${tenantId}/recipes" />
+	</bean>
+
+	<!-- Scan for files inside the base directory with names matches the pattern 
+		^(.*)-(\d+)\.csv -->
+	<file:inbound-channel-adapter id="batchFilesRecipes"
+		directory="#{baseDirectoryRecipes}" filename-regex="^(.*)-(\d+)\.csv"
+		comparator="fileOrderComparator">
+		<!-- Periodic trigger in milliseconds -->
+		<int:poller fixed-rate="1000" />
+	</file:inbound-channel-adapter>
+
+
+	<!-- Move the file to processing and start the flow -->
+	<file:outbound-gateway request-channel="batchFilesRecipes"
+		reply-channel="batchFilesRecipesProc" directory="#{baseDirectoryRecipes}/processing"
+		delete-source-files="true" />
+
+
+	<!-- Initialize the batch header with relevant information -->
+	<int:service-activator input-channel="batchFilesRecipesProc"
+		output-channel="batchFilesHeaderInit" ref="recipesHeaderSetupTask"
+		method="execute" />
+
+	<bean id="recipesHeaderSetupTask"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.task.HeaderSetupTask">
+		<property name="catalog" value="apparelProductCatalog" />
+		<property name="net" value="false" />
+		<property name="storeBaseDirectory" ref="baseDirectoryRecipes" />
+	</bean>
+
+
+	<alias name="batchTransformerTaskBK" alias="batchTransformerTask" />
+	<bean id="batchTransformerTaskBK"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.task.ImpexTransformerTask"
+		init-method="initConvertersMap">
+		<property name="fieldSeparator" value=";" />
+		<property name="cleanupHelper" ref="cleanupHelper" />
+	</bean>
+
+
+	<!-- UnitModel impex converter -->
+	<bean id="unitConverter"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>
+				#{defaultImpexProductHeader}
+				INSERT_UPDATE UNIT;code[unique=true]; unitType; name[lang=en]
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{+1};{2}</value>
+		</property>
+	</bean>
+
+	<!-- UnitModel impex converter mapping to unit prefix -->
+	<bean id="unitConverterMapping"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+		p:mapping="unit" p:converter-ref="unitConverter" />
+
+	<!-- FoodModel impex converter -->
+	<bean id="foodConverter"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>
+				#{defaultImpexProductHeader}
+				$catVersion=catalogVersion(catalog(id[default=$prodCat]),version[default=$version])
+				INSERT_UPDATE food;code[unique=true];isRaw; unit(code);$catVersion
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{+1};{2};Default:Staged</value>
+		</property>
+	</bean>
+
+	<!-- FoodModel impex converter mapping to unit prefix -->
+	<bean id="foodConverterMapping"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+		p:mapping="food" p:converter-ref="foodConverter" />
+
+
+	<!-- IngredientModel impex converter -->
+	<bean id="ingredientConverter"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>
+				#{defaultImpexProductHeader}
+				INSERT_UPDATE ingredient;isfood;quantity[unique=true];food(code)[unique=true];code[unique=true]
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{0};{+1};{+2};{+3}</value>
+		</property>
+	</bean>
+
+	<!-- IngredientModel impex converter mapping to unit prefix -->
+	<bean id="ingredientConverterMapping"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+		p:mapping="ingredient" p:converter-ref="ingredientConverter" />
+
+
+	<!-- RecipeModel impex converter -->
+	<bean id="recipeConverter"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>
+				#{defaultImpexProductHeader}
+				INSERT_UPDATE recipe;code[unique=true];name;description;difficulty(code);ingredients(code);method;servings;time
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{1};{2};{3};{4};{5};{6};{7}</value>
+		</property>
+	</bean>
+
+	<!-- RecipeModel impex converter mapping to unit prefix -->
+	<bean id="recipeConverterMapping"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+		p:mapping="recipe" p:converter-ref="recipeConverter" />
+
+</beans>	

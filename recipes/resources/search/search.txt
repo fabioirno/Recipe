@@ -1,0 +1,109 @@
+##query che restituisce le ricetta ordinate per tempo discendente
+SELECT {r.name} AS "Name of recipe", {r.time} AS "Time of prepation" FROM { 
+	recipe AS r 
+	}
+ORDER BY {r.time} DESC
+
+## query che restituisce il nome delle ricette, porzioni, difficoltà, quantità e nome dei cibi	
+SELECT {r.name} AS "Name of recipe", {r.servings} AS "Servings", {de.code} AS "Difficulty", {i.quantity} AS "Quantity", {f.name} AS "Food" 
+FROM { 	recipe AS r 
+				JOIN Recipe2IngredientRelation AS r2i on {r2i.source} = {r.PK} 
+				JOIN ingredient AS i ON {r2i.target} = {i.PK} 
+				JOIN food AS f ON  {i.food} = {f.PK}
+				JOIN DifficultyEnumeration AS de ON {r.difficulty} = {de.PK}
+	}
+	
+## query che restituisce gli ingredienti necessari per una determinata ricetta.
+SELECT {f.name} AS "Food" , {i.quantity} AS "Quantity"
+FROM { recipe AS r
+			JOIN Recipe2IngredientRelation AS r2i on {r2i.source} = {r.PK} 
+				JOIN ingredient AS i ON {r2i.target} = {i.PK} 
+				JOIN food AS f ON  {i.food} = {f.PK}
+		}
+	 WHERE {r.name} LIKE 'salad'
+	 
+
+
+##query che restituisce la ricetta con tempo di preparazione minore.
+SELECT {r.name} AS "Name of recipe", {r.time} AS "Time of prepation" 
+		FROM {recipe AS r}
+			WHERE {r.time} <= ALL
+								(
+								 {{
+						SELECT {r.time} FROM {recipe AS r}
+							}}
+								)
+								
+## query per le ricette difficili
+SELECT {r.name} AS "Name of recipe", {de.code} AS "Difficulty"  FROM {
+			recipe AS r
+			JOIN DifficultyEnumeration AS de ON {r.difficulty} = {de.PK}
+			} 
+            WHERE {de.code} LIKE 'difficult'
+			
+## query per ottenere le ricette costituite da determinati prodotti 	
+SELECT DISTINCT uniontable."Name of recipe", uniontable."Name of recipe" FROM
+(
+   {{
+
+SELECT {r.name} AS "Name of recipe" FROM { 
+	recipe AS r JOIN Recipe2IngredientRelation AS r2i ON {r2i.source} = {r.PK} 
+				JOIN ingredient AS i ON {r2i.target} = {i.PK} 
+				JOIN food AS f ON  {i.food} = {f.PK}
+	}
+	WHERE {f.name} = 'carrot' 
+}}
+   UNION ALL
+   {{
+   
+SELECT {r.name} AS "Name of recipe" FROM { 
+	recipe AS r JOIN Recipe2IngredientRelation AS r2i ON {r2i.source} = {r.PK} 
+				JOIN ingredient AS i ON {r2i.target} = {i.PK} 
+				JOIN food AS f ON  {i.food} = {f.PK}
+	}
+	WHERE {f.name} = 'tomato'
+   }}
+) uniontable
+
+Stessa query ma in modo compatto:
+SELECT DISTINCT {r.name} AS "Name of recipe" FROM { 
+	recipe AS r JOIN Recipe2IngredientRelation AS r2i ON {r2i.source} = {r.PK} 
+				JOIN ingredient AS i ON {r2i.target} = {i.PK} 
+				JOIN food AS f ON  {i.food} = {f.PK}
+	}
+	WHERE {f.name} = 'carrot' OR {f.name} = 'tomato'
+	
+## query che restituisce l'unica ricetta che contiene quei determinati food
+SELECT "Name of recipe" FROM 
+({{ 
+
+SELECT {r.name} AS "Name of recipe" FROM { 
+	recipe AS r JOIN Recipe2IngredientRelation AS r2i ON {r2i.source} = {r.PK} 
+				JOIN ingredient AS i ON {r2i.target} = {i.PK} 
+				JOIN food AS f ON  {i.food} = {f.PK}
+	}
+	WHERE {f.name} = 'tomato' 
+
+}}) WHERE "Name of recipe" IN
+
+({{
+ 
+ SELECT {r.name} AS "Name of recipe" FROM { 
+	recipe AS r JOIN Recipe2IngredientRelation AS r2i ON {r2i.source} = {r.PK} 
+				JOIN ingredient AS i ON {r2i.target} = {i.PK} 
+				JOIN food AS f ON  {i.food} = {f.PK}
+	}
+	WHERE {f.name} = 'oil'
+ 
+ }})
+ 
+## query per ottenere il nome degli chef che ha fatto una determinata ricetta 
+SELECT {c.name} AS "Name of chef", {r.name} AS "Name of recipes" FROM { 
+	recipe AS r JOIN Recipe2Chef AS r2c ON {r2c.source} = {r.PK} 
+				JOIN chef AS c ON {r2c.target} = {c.PK} 
+				
+	}
+	WHERE {r.name} like 'pasta carbonara'
+	
+## query per ottenere il rating degli chef
+SELECT {c.name} AS "Name of chef", {c.rating} AS "Rating" FROM {chef AS c}

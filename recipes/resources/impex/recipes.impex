@@ -1,0 +1,158 @@
+##########################################################################################################
+# Unit 
+
+INSERT_UPDATE UNIT; code[unique=true]; unitType; name[lang=en]
+				  ;				   mg;       mg;  weight
+				  ;                 l;        l;  liter
+				  ;       		   pz;       pz;  piece
+				  
+INSERT_UPDATE UNIT; code[unique=true]; unitType; name[lang=it]
+				  ;				   mg;       mg;  peso
+				  ;                 l;        l;  litro
+				  ;       		   pz;       pz;  pezzo
+
+#########################################################################################################
+# foods
+$catVersion=catalogVersion(catalog(id[default=$prodCat]),version[default=$version])
+
+INSERT_UPDATE  Food;code[unique=true]   ;name [lang=it]  	;isRaw; unit(code); kcal      ;$catVersion
+			       ;1                   ;guangiale		    ;true ;    mg     ; 0,458 	  ;Default:Staged
+			       ;2					;sale fino		    ;true ;    mg	  ; 0,001     ;Default:Staged
+			       ;3					;pecorino			;true ;    mg     ; 0,332     ;Default:Staged
+				   ;4					;uova				;true ;    pz     ; 0,052     ;Default:Staged
+				   ;5					;carota				;true ;    pz	  ; 0,41      ;Default:Staged
+				   ;6					;pomodoro			;true ;    pz	  ; 0,18      ;Default:Staged
+				   ;7					;pomodoro			;true ;    pz	  ; 0,18      ;Default:Staged
+				   ;8					;tonno			    ;true ;    mg     ;	0,130     ;Default:Staged
+				   ;9					;mela				;true ;    pz     ;	0,052     ;Default:Staged
+				   ;10					;arancia			;true ;    pz     ;	0,034     ;Default:Staged
+				   ;11					;noci				;true ;    pz     ; 0,607     ;Default:Staged
+				   ;12					;spaghetti			;true ;    mg	  ; 0,158     ;Default:Staged
+				   ;13					;fagioli			;true ;    mg     ; 0,303     ;Default:Staged
+				   ;14					;prociutto crudo	;true ;    mg     ; 0,145     ;Default:Staged 
+				   ;15					;olio				;true ;    l      ; 0,884     ;Default:Staged	
+				   ;16					;fusilli			;true ;    mg     ;	0,288     ;Default:Staged
+				   ;17					;tagliatelle		;true ;    mg     ; 0,350     ;Default:Staged
+				   ;18					;mista				;true ;    mg     ; 0,200     ;Default:Staged
+				   ;19					;formaggio			;true ;    mg     ; 0,402     ;Default:Staged
+				   ;20					;zucchero		    ;true ;    mg     ; 0,387     ;Default:Staged
+				   ;21					;farina		    	;true ;    mg     ; 0,364     ;Default:Staged
+				   ;22					;zucca		   		;true ;    mg     ; 0,026     ;Default:Staged
+				   ;23					;vongole		    ;true ;    mg     ; 0,072     ;Default:Staged
+				   ;24					;aglio		    	;true ;    pz     ;	0,041     ;Default:Staged
+				   ;25					;prezzemolo			;true ;    pz     ; 0,036     ;Default:Staged
+				   ;26					;panettone			;false;    mg     ; 0,334     ;Default:Staged
+
+
+#########################################################################################################				   
+$catVersion=catalogVersion(catalog(id[default=$prodCat]),version[default=$version])
+
+INSERT_UPDATE  Food;code[unique=true]   ;name [lang=en]	    ;isRaw;$catVersion
+			       ;1                   ;pillow	            ;true ;Default:Staged
+			       ;2					;fine salt		    ;true ;Default:Staged
+			       ;3					;pecorino cheese	;true ;Default:Staged
+				   ;4					;eggs    			;true ;Default:Staged
+				   ;5					;carrot				;true ;Default:Staged
+				   ;6					;tomato			    ;true ;Default:Staged
+				   ;7					;tomato			    ;true ;Default:Staged
+				   ;8					;tuna			    ;true ;Default:Staged
+				   ;9					;apple				;true ;Default:Staged
+				   ;10					;orange		    	;true ;Default:Staged
+				   ;11					;nuts				;true ;Default:Staged
+				   ;12					;spaghetti			;true ;Default:Staged
+				   ;13					;beans			    ;true ;Default:Staged
+				   ;14					;raw prociutto  	;true ;Default:Staged 
+				   ;15					;oil				;true ;Default:Staged	
+				   ;16					;fusilli			;true ;Default:Staged
+				   ;17					;noodles	     	;true ;Default:Staged
+				   ;18					;mixed				;true ;Default:Staged
+				   ;19					;cheese		    	;true ;Default:Staged
+				   ;20					;sugar		        ;true ;Default:Staged
+				   ;21					;flour		    	;true ;Default:Staged
+				   ;22					;pumpkin	   		;true ;Default:Staged
+				   ;23					;clams		        ;true ;Default:Staged
+				   ;24					;garlic		    	;true ;Default:Staged
+				   ;25					;parsley			;true ;Default:Staged
+				   ;26					;panettone			;false;Default:Staged
+				   
+
+				   
+###############################################################################################
+# Ingredient
+
+INSERT_UPDATE ingredient;code[unique=true];isfood;quantity[unique=true];food(code)[unique=true]
+						;1				  ;true  ;500		           ;1
+						;2                ;true  ;200		           ;2						
+						;3				  ;true  ;250		           ;3
+						;4				  ;true  ;5		    		   ;4
+						;5                ;true  ;10		           ;5
+						;6                ;true  ;150		           ;6
+						;7                ;true  ;50			       ;7
+						;8                ;true  ;300		           ;8	
+						;9                ;true  ;3		               ;9	
+						;10               ;true  ;100		           ;10	
+						;11               ;true  ;200		           ;11	
+						;12               ;true  ;200		           ;12
+						;13               ;true  ;200		           ;13
+						;14               ;true  ;200		           ;14
+						;15               ;true  ;200		           ;15
+						;16               ;true  ;200		           ;16
+						;17               ;true  ;200		           ;17
+						;18               ;true  ;150		           ;18
+						;19               ;true  ;150		           ;19
+						;20               ;true  ;80			       ;20
+						;21               ;true  ;40			       ;21
+						;22               ;true  ;600		           ;22
+						;23               ;true  ;1000		           ;23
+						;24               ;true  ;1		               ;24
+						;25               ;true  ;1   		           ;25
+				
+###########################################################################################################################################################
+# Recipes (creazione delle ricette)
+
+INSERT_UPDATE recipe;code[unique=true];name[lang=it]             ;description[lang=it]   ;difficulty(code);ingredients(code)[mode=append];method[lang=it];   servings;   time  
+					;1				  ;pasta alla carbonara 	 ;descrizione   		 ; easy           ;1,4,12,3                      ;         metodo;     		4;     15   
+					;2				  ;pasta con fagioli   	     ;descrizione   		 ; easy           ;18,15,13,7					 ;    	   metodo;     		4;     20
+					;3				  ;frittata                  ;descrizione   	     ; easy           ;14,4,15,19					 ;    	   metodo; 	  		4;     10
+					;4				  ;torta 4 ingredienti       ;descrizione   		 ; medium         ;20,4,21,10					 ;    	   metodo;     		4;     25
+					;5				  ;pasta con la zucca        ;descrizione   		 ; easy           ;22,1,12,2					 ;    	   metodo;     		4;     30
+     				;6				  ;pasta con le vongole      ;descrizione   		 ; medium         ;23,24,25,12					 ;    	   metodo;     		4;     20
+					;7				  ;torta alle mele           ;descrizione   		 ; difficult      ;9,4,21,20					 ;    	   metodo;     		4;     40
+					;8				  ;tagliatelle al tonno      ;descrizione   		 ; medium         ;8,24,15,25					 ;    	   metodo;     		4;     15
+					;9                ;insalata                  ;descrizione   		 ; easy           ;5,7,8,15						 ;    	   metodo;     		4;     5 
+					;10				  ;fusilli con noci e zucca  ;descrizione   		 ; medium         ;16,11,22,15					 ;    	   metodo;     		4;     25
+					
+################################################################################################################
+# Recipes (creazione delle ricette - inglese)
+
+INSERT_UPDATE recipe;code[unique=true];name[lang=en]                     ;description [lang=en];method [lang=en]
+					;1				  ;pasta carbonara 	                 ;description          ;method;
+					;2				  ;pasta with beans   	             ;description          ;method;        
+					;3				  ;omelette                          ;description          ;method;      	
+					;4				  ;cake 4 ingredients                ;description          ;method;        
+					;5				  ;Pasta with pumpkin                ;description          ;method;          
+     				;6				  ;pasta with clams                  ;description          ;method;          
+					;7				  ;apple pie                         ;description          ;method;          
+					;8				  ;tagliatelle with tuna             ;description          ;method;          
+					;9                ;salad                             ;description          ;method;          
+					;10				  ;fusilli with walnuts and pumpkin  ;description          ;method;    
+
+
+#################################################################################################################
+# Address
+
+INSERT_UPDATE address; company; streetname; streetnumber; town; cellphone; email; owner(Chef.uid)[unique=true];billingAddress [default=false]; contactAddress[default=false]; shippingAddress[default=false]; unloadingAddress[default=false];
+					 ; Gelateria Fiordilatte; via Cividale; 53; Udine; +39.0432.502072; fiordilatte@tin.it; Giancarlo Timballo;;;;;
+					 ; Osteria del Borgo    ; via Antongini Fratelli; 16 ; Borgosesia Vercelli ; +39.0163.27841 ; ;Luciano Alberti;;;;; 
+					 ; Pollen Street Social ; Pollen; 8-13 ; Londra ; +44.020.72907600 ; info@jasontherton.co.uk ; Jason Atherton; false;;;;;
+					 ; L'olivo del Capri Palace ; via Capodimonte ; 14 ; Capri ; +39.081.9780111 ; olivo@capripalace.com ; Andrea Migliaccio;;;;;  
+			
+##################################################################################################################
+# Chef
+
+INSERT_UPDATE chef; name[unique=true]; uid; rating; recipes(code)
+				  ; Giancarlo Timballo; Giancarlo Timballo; 4 ;2,4,7
+				  ; Luciano Alberti   ; Luciano Alberti   ; 5 ;1,8,9
+				  ; Jason Atherton    ; Jason Atherton    ; 8 ;3,5
+				  ; Andrea Migliaccio ; Andrea Migliaccio ; 7 ;6,10
+					

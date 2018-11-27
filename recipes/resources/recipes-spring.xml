@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ [y] hybris Platform
+  ~ 
+  ~ Copyright (c) 2000-2016 SAP SE
+  ~ All rights reserved.
+  ~ 
+  ~ This software is the confidential and proprietary information of SAP 
+  ~ Hybris ("Confidential Information"). You shall not disclose such 
+  ~ Confidential Information and shall use it only in accordance with the 
+  ~ terms of the license agreement you entered into with SAP Hybris.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+           
+     
+           
+	<import resource="classpath:/recipes/integration/hot-folder-recipe-spring.xml"/>
+     
+
+    <bean id="recipesSystemSetup" class="my.recipes.setup.RecipesSystemSetup">
+        <!-- constructor arg injection example -->
+        <constructor-arg ref="recipesService"/>
+    </bean>
+
+    <bean id="recipesService" class="my.recipes.service.impl.DefaultRecipesService">
+        <!-- setter injection example -->
+        <property name="modelService" ref="modelService"/>
+        <property name="mediaService" ref="mediaService"/>
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+        <property name="recipeDao" ref="recipeDao"/>
+    </bean>
+    
+    
+    <bean id="totalCalsAttributeHandler" class="my.recipes.dynamic.TotalCalsAttributeHandler">
+    </bean>
+    
+    <alias alias="recipeDao" name="defaultRecipeDao" />
+    <bean id="defaultRecipeDao" class="my.recipes.daos.impl.DefaultRecipeDao">
+        <!-- setter injection example -->
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+    
+    <alias alias="chefDao" name="defaultChefDao" />
+    <bean id="defaultChefDao" class="my.recipes.daos.impl.DefaultChefDao">
+        <!-- setter injection example -->
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+    
+    <alias alias="foodDao" name="defaultFoodDao" />
+    <bean id="defaultFoodDao" class="my.recipes.daos.impl.DefaultFoodDao">
+        <!-- setter injection example -->
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+    
+    <alias alias="ingredientDao" name="defaultIngredientDao" />
+    <bean id="defaultIngredientDao" class="my.recipes.daos.impl.DefaultIngredientDao">
+        <!-- setter injection example -->
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+    
+  	
+</beans>
