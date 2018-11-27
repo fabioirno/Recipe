@@ -90,11 +90,27 @@
         <property name="flexibleSearchService" ref="flexibleSearchService"/>
     </bean>
     
+      
+    <bean id="recipeData" class="my.recipes.facades.RecipeData" scope="prototype" />
     
-    <bean id="recipeData" class="my.recipes.facades.populators.DefaultRecipePopulator" scope="prototype" />
+    <alias name="defaultRecipeConverter" alias= "recipeModelToDataConverter" />
+    <bean id= "defaultRecipeConverter" parent= "abstractPopulatingConverter" >
+    	<lookup-method name="createTarget" bean="recipeData "/>
+    	<property name="populators" >
+    		<list>
+    			<ref bean="recipePopulator" />
+    		</list>
+     	</property>
+    </bean>
     
+    <alias alias="recipePopulator" name="defaultRecipePopulator" />
+    <bean id = "defaultRecipePopulator" class="my.recipes.populators.DefaultRecipePopulator" />
     
+   <alias alias="recipeFacade" name="defaultRecipeFacade" />
+    <bean id = "defaultRecipeFacade" class="my.recipes.facades.impl.DefaultRecipeFacade" >
+    <property name="recipeService" ref="recipeService"/>
+    <property name="recipeModelToDataConverter" ref="recipeModelToDataConverter"/>
+    </bean>
     
-    
-			
+    			
 </beans>
