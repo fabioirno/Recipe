@@ -37,6 +37,16 @@
         <property name="recipeDao" ref="recipeDao"/>
     </bean>
     
+    <bean id="chefService" class="my.recipes.service.impl.DefaultChefService">
+        <!-- setter injection example -->
+        <property name="chefDao" ref="chefDao"/>
+    </bean>
+    
+    <bean id="foodService" class="my.recipes.service.impl.DefaultFoodService">
+        <!-- setter injection example -->
+        <property name="foodDao" ref="foodDao"/>
+    </bean>
+    
     
     <bean id="totalCalsAttributeHandler" class="my.recipes.dynamic.TotalCalsAttributeHandler">
     </bean>
