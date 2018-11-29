@@ -47,6 +47,10 @@
         <property name="foodDao" ref="foodDao"/>
     </bean>
     
+    <bean id="ingredientService" class="my.recipes.service.impl.DefaultIngredientService">
+    	<property name="ingredientDao" ref="ingredientDao" />
+    </bean>
+    
     
     <bean id="totalCalsAttributeHandler" class="my.recipes.dynamic.TotalCalsAttributeHandler">
     </bean>

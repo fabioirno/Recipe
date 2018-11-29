@@ -19,9 +19,7 @@ import my.recipes.daos.FoodDao;
 import my.recipes.model.FoodModel;
 import my.recipes.service.FoodService;
 
-/**
- *
- */
+
 public class DefaultFoodService implements FoodService
 {
 

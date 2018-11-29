@@ -42,6 +42,6 @@
 		<property name="quantity" type="java.lang.Double" />
 	</bean>
 	
-		
+			
 
 </beans>
