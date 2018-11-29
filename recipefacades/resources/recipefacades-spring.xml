@@ -74,7 +74,27 @@
     <property name="chefService" ref="chefService"/>
     <property name="chefModelToDataConverter" ref="chefModelToDataConverter"/>
     </bean>
-      
     
+    <bean id="foodData" class="my.recipes.facades.FoodData" scope="prototype" />
+    
+    <alias name="defaultFoodConverter" alias= "foodModelToDataConverter" />
+    <bean id= "defaultFoodConverter" parent= "abstractPopulatingConverter" >
+    	<lookup-method name="createTarget" bean="foodData "/>
+    	<property name="populators" >
+    		<list>
+    			<ref bean="foodPopulator" />
+    		</list>
+     	</property>
+    </bean>
+    
+    <alias alias="foodPopulator" name="defaultFoodPopulator" />
+    <bean id = "defaultFoodPopulator" class="my.recipes.populators.DefaultFoodPopulator" />
+    	
+    
+   <alias alias="foodFacade" name="defaultFoodFacade" />
+    <bean id = "defaultFoodFacade" class="my.recipes.facades.impl.DefaultFoodFacade" >
+    <property name="foodService" ref="foodService"/>
+    <property name="foodModelToDataConverter" ref="foodModelToDataConverter"/>
+    </bean> 
     			
 </beans>

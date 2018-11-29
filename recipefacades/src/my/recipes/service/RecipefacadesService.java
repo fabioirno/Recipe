@@ -15,4 +15,7 @@ public interface RecipefacadesService
 	String getHybrisLogoUrl(String logoCode);
 
 	void createLogo(String logoCode);
+
+
+
 }

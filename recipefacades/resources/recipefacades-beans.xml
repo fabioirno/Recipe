@@ -34,6 +34,7 @@
 	<bean class="my.recipes.facades.FoodData">
 		<property name="code" type="String" />
 		<property name="name" type="String" />
+		<property name="kcal" type="java.lang.Double" />
 	</bean>
 	
 	<bean class="my.recipes.facades.IngredientData">
@@ -41,9 +42,6 @@
 		<property name="quantity" type="java.lang.Double" />
 	</bean>
 	
-	
-	
-	
-	
+		
 
 </beans>

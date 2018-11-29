@@ -15,6 +15,8 @@ import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Required;
+
 import my.recipes.facades.RecipeData;
 import my.recipes.facades.RecipeFacade;
 import my.recipes.model.RecipeModel;
@@ -24,33 +26,46 @@ import my.recipes.service.RecipesService;
 public class DefaultRecipeFacade implements RecipeFacade
 {
 
-	private RecipesService recipeService;
+	private RecipesService recipesService;
 	private Converter<RecipeModel, RecipeData> recipeModelToDataConverter;
 
 	@Override
 	public List<RecipeData> getAllRecipes()
 	{
-		final List<RecipeModel> recipes = getRecipeService().getAllRecipes();
+		final List<RecipeModel> recipes = getRecipesService().getAllRecipes();
 
 		return getRecipeModelToDataConverter().convertAll(recipes);
 
 	}
 
+	@Override
+	public List<RecipeData> getRecipesForCode(final String code)
+	{
+		final List<RecipeModel> recipes = getRecipesService().getRecipesForCode(code);
+		return getRecipeModelToDataConverter().convertAll(recipes);
+	}
+
+
+	@Override
+	public RecipeData getRecipeForName(final String name)
+	{
+		final RecipeModel recipe = getRecipesService().getRecipesForName(name);
+		return getRecipeModelToDataConverter().convert(recipe);
+	}
+
+
 	/**
 	 * @return the recipeService
 	 */
-	public RecipesService getRecipeService()
+	public RecipesService getRecipesService()
 	{
-		return recipeService;
+		return recipesService;
 	}
 
-	/**
-	 * @param recipeService
-	 *           the recipeService to set
-	 */
-	public void setRecipeService(final RecipesService recipeService)
+	@Required
+	public void setRecipesService(final RecipesService recipesService)
 	{
-		this.recipeService = recipeService;
+		this.recipesService = recipesService;
 	}
 
 	/**
@@ -61,10 +76,7 @@ public class DefaultRecipeFacade implements RecipeFacade
 		return recipeModelToDataConverter;
 	}
 
-	/**
-	 * @param recipeModelToDataConverter
-	 *           the recipeModelToDataConverter to set
-	 */
+	@Required
 	public void setRecipeModelToDataConverter(final Converter<RecipeModel, RecipeData> recipeModelToDataConverter)
 	{
 		this.recipeModelToDataConverter = recipeModelToDataConverter;

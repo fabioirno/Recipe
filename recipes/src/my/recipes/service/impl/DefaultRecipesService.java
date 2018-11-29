@@ -52,6 +52,19 @@ public class DefaultRecipesService implements RecipesService
 
 
 	@Override
+	public List<RecipeModel> getRecipesForCode(final String code)
+	{
+		return recipeDao.findRecipesByCode(code);
+	}
+
+
+	@Override
+	public RecipeModel getRecipesForName(final String name)
+	{
+		return recipeDao.findRecipeByName(name);
+	}
+
+	@Override
 	public String getHybrisLogoUrl(final String logoCode)
 	{
 		final MediaModel media = mediaService.getMedia(logoCode);
@@ -116,6 +129,15 @@ public class DefaultRecipesService implements RecipesService
 	{
 		this.flexibleSearchService = flexibleSearchService;
 	}
+
+
+	@Required
+	public void setRecipeDao(final RecipeDao recipeDao)
+	{
+		this.recipeDao = recipeDao;
+	}
+
+
 
 
 }
