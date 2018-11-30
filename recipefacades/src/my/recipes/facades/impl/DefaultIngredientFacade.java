@@ -41,11 +41,11 @@ public class DefaultIngredientFacade implements IngredientFacade
 
 
 	@Override
-	public List<IngredientData> getIngredientForCode(final String code)
+	public IngredientData getIngredientForCode(final String code)
 	{
-		final List<IngredientModel> ingredients = getIngredientService().getIngredientsForCode(code);
+		final IngredientModel ingredient = getIngredientService().getIngredientsForCode(code);
 
-		return getIngredientModelToDataConverter().convertAll(ingredients);
+		return getIngredientModelToDataConverter().convert(ingredient);
 	}
 
 

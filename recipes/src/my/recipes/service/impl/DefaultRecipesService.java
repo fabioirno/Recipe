@@ -52,7 +52,7 @@ public class DefaultRecipesService implements RecipesService
 
 
 	@Override
-	public List<RecipeModel> getRecipesForCode(final String code)
+	public RecipeModel getRecipesForCode(final String code)
 	{
 		return recipeDao.findRecipesByCode(code);
 	}

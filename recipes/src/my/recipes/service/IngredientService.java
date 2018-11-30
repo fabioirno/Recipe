@@ -20,6 +20,6 @@ public interface IngredientService
 {
 	public List<IngredientModel> getAllIngredient();
 
-	public List<IngredientModel> getIngredientsForCode(String code);
+	public IngredientModel getIngredientsForCode(String code);
 
 }

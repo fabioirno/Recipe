@@ -31,7 +31,7 @@
     </bean>
     
       
-    <bean id="recipeData" class="my.recipes.facades.RecipeData" scope="prototype" />
+    <bean id="recipeData" class="my.recipes.facades.data.RecipeData" scope="prototype" />
     
     <alias name="defaultRecipeConverter" alias= "recipeModelToDataConverter" />
     <bean id= "defaultRecipeConverter" parent= "abstractPopulatingConverter" >
@@ -52,7 +52,7 @@
     <property name="recipeModelToDataConverter" ref="recipeModelToDataConverter"/>
     </bean>
     
-    <bean id="chefData" class="my.recipes.facades.ChefData" scope="prototype" />
+    <bean id="chefData" class="my.recipes.facades.data.ChefData" scope="prototype" />
     
     <alias name="defaultChefConverter" alias= "chefModelToDataConverter" />
     <bean id= "defaultChefConverter" parent= "abstractPopulatingConverter" >
@@ -75,7 +75,7 @@
     <property name="chefModelToDataConverter" ref="chefModelToDataConverter"/>
     </bean>
     
-    <bean id="foodData" class="my.recipes.facades.FoodData" scope="prototype" />
+    <bean id="foodData" class="my.recipes.facades.data.FoodData" scope="prototype" />
     
     <alias name="defaultFoodConverter" alias= "foodModelToDataConverter" />
     <bean id= "defaultFoodConverter" parent= "abstractPopulatingConverter" >
@@ -97,7 +97,7 @@
     <property name="foodModelToDataConverter" ref="foodModelToDataConverter"/>
     </bean> 
     
-    <bean id="ingredientData" class="my.recipes.facades.IngredientData" scope="prototype" />
+    <bean id="ingredientData" class="my.recipes.facades.data.IngredientData" scope="prototype" />
     
     <alias name="defaultIngredientConverter" alias= "ingredientModelToDataConverter" />
     <bean id= "defaultIngredientConverter" parent= "abstractPopulatingConverter" >

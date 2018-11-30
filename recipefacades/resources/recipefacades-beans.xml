@@ -15,7 +15,7 @@
 
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
 
-	<bean class="my.recipes.facades.RecipeData">
+	<bean class="my.recipes.facades.data.RecipeData">
 		<property name="code" type="String" />
 		<property name="name" type="String" />
 		<property name="difficulty" type="String" />
@@ -25,19 +25,19 @@
 		<property name="totalCals" type="java.lang.Double" />
 	</bean>
 	
-	<bean class="my.recipes.facades.ChefData">
+	<bean class="my.recipes.facades.data.ChefData">
 		<property name="name" type="String" />
 		<property name="rating" type="java.lang.Integer" />
 		<property name="address" type="de.hybris.platform.commercefacades.user.data.AddressData" /> 
 	</bean>
 	
-	<bean class="my.recipes.facades.FoodData">
+	<bean class="my.recipes.facades.data.FoodData">
 		<property name="code" type="String" />
 		<property name="name" type="String" />
 		<property name="kcal" type="java.lang.Double" />
 	</bean>
 	
-	<bean class="my.recipes.facades.IngredientData">
+	<bean class="my.recipes.facades.data.IngredientData">
 		<property name="code" type="String" />
 		<property name="quantity" type="java.lang.Double" />
 	</bean>

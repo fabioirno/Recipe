@@ -9,9 +9,9 @@
 	<classpathentry kind="src" output="eclipsebin/classes" path="testsrc"/>
 	<classpathentry kind="src" output="eclipsebin/classes" path="gensrc"/>
 	<classpathentry kind="src" path="/platform"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/recipefacades"/>
 	<classpathentry kind="lib" path="C:/Users/firno/Desktop/Hybris 5/lib/jstl-api-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/firno/Desktop/Hybris 5/lib/spring-webmvc-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="C:/Users/firno/Desktop/Hybris 5/lib/standard.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/recipefacades"/>
 	<classpathentry kind="output" path="eclipsebin/notused"/>
 </classpath>

@@ -44,7 +44,7 @@ public class DefaultIngredientDao implements IngredientDao
 	} //end
 
 	@Override
-	public List<IngredientModel> findIngredientsByCode(final String code)
+	public IngredientModel findIngredientsByCode(final String code)
 	{
 		//Build a query for the flexible search.
 		final String queryString = "SELECT {p:" + IngredientModel.PK + "}" + "FROM {" + IngredientModel._TYPECODE + " AS p} "
@@ -53,7 +53,7 @@ public class DefaultIngredientDao implements IngredientDao
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
 		query.addQueryParameter("code", code);
 
-		return flexibleSearchService.<IngredientModel> search(query).getResult();
+		return (IngredientModel) flexibleSearchService.search(query);
 
 	}// end
 

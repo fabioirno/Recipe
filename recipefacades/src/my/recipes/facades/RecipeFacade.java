@@ -18,7 +18,7 @@ public interface RecipeFacade
 
 	List<RecipeData> getAllRecipes();
 
-	List<RecipeData> getRecipesForCode(String code);
+	RecipeData getRecipesForCode(String code);
 
 	RecipeData getRecipeForName(String name);
 

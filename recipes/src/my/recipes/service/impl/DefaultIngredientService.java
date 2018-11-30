@@ -31,7 +31,7 @@ public class DefaultIngredientService implements IngredientService
 	}
 
 	@Override
-	public List<IngredientModel> getIngredientsForCode(final String code)
+	public IngredientModel getIngredientsForCode(final String code)
 	{
 		return ingredientDao.findIngredientsByCode(code);
 	}

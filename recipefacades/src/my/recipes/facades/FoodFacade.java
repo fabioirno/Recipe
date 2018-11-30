@@ -14,7 +14,7 @@ package my.recipes.facades;
 import java.util.List;
 
 
-public interface FoodFadace
+public interface FoodFacade
 {
 	List<FoodData> getAllFoods();
 

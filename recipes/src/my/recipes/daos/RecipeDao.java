@@ -22,7 +22,7 @@ public interface RecipeDao
 
 	List<RecipeModel> findRecipes();
 
-	List<RecipeModel> findRecipesByCode(String code);
+	RecipeModel findRecipesByCode(String code);
 
 	RecipeModel findRecipeByName(String name);
 

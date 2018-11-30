@@ -24,7 +24,7 @@ public interface RecipesService
 
 	public List<RecipeModel> getAllRecipes();
 
-	public List<RecipeModel> getRecipesForCode(String code);
+	public RecipeModel getRecipesForCode(String code);
 
 	public RecipeModel getRecipesForName(String name);
 

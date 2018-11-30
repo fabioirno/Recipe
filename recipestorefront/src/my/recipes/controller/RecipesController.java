@@ -58,11 +58,11 @@ public class RecipesController
 	final String recipeCode, final Model model) throws UnsupportedEncodingException
 	{
 
-		final RecipeData recipe = recipeFacade.getRecipesForCode(recipeCode); // rettificare il Dao di recipe deve essere un RecipeData e non un List<RecipeData>
+		final RecipeData recipe = recipeFacade.getRecipesForCode(recipeCode);
 
 		model.addAttribute("recipe", recipe);
 
-		return "RecipeDetail";
+		return "RecipeDetailCode";
 	}
 
 

@@ -19,7 +19,7 @@ public interface IngredientFacade
 
 	List<IngredientData> getAllIngredients();
 
-	List<IngredientData> getIngredientForCode(String code);
+	IngredientData getIngredientForCode(String code);
 
 
 }

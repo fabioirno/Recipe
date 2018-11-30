@@ -39,10 +39,10 @@ public class DefaultRecipeFacade implements RecipeFacade
 	}
 
 	@Override
-	public List<RecipeData> getRecipesForCode(final String code)
+	public RecipeData getRecipesForCode(final String code)
 	{
-		final List<RecipeModel> recipes = getRecipesService().getRecipesForCode(code);
-		return getRecipeModelToDataConverter().convertAll(recipes);
+		final RecipeModel recipes = getRecipesService().getRecipesForCode(code);
+		return getRecipeModelToDataConverter().convert(recipes);
 	}
 
 

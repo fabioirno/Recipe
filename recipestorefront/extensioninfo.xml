@@ -16,7 +16,14 @@
       <!-- you should add all required extensions to this list, except platform extensions which are automatically required -->
       
                
-      <requires-extension name="recipefacades"/>      
+     
+      <requires-extension name="orderselfserviceaddon"/>
+   	  <requires-extension name="customerticketingaddon"/>
+      <requires-extension name="assistedservicestorefront"/>
+      <requires-extension name="textfieldconfiguratortemplateaddon"/>
+      <requires-extension name="promotionenginesamplesaddon"/>
+      <requires-extension name="commerceorgsamplesaddon"/>
+      <requires-extension name="recipefacades"/>    
       
 
       <coremodule generated="true" manager="my.recipes.jalo.RecipestorefrontManager" packageroot="my.recipes"/>

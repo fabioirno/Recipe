@@ -18,12 +18,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Required;
 
 import my.recipes.facades.FoodData;
-import my.recipes.facades.FoodFadace;
+import my.recipes.facades.FoodFacade;
 import my.recipes.model.FoodModel;
 import my.recipes.service.FoodService;
 
 
-public class DefaultFoodFacade implements FoodFadace
+public class DefaultFoodFacade implements FoodFacade
 {
 	private FoodService foodService;
 	private Converter<FoodModel, FoodData> foodModelToDataConverter;
