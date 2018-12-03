@@ -23,4 +23,10 @@ public interface RecipesService
 	void createLogo(String logoCode);
 
 	public List<RecipeModel> getAllRecipes();
+
+	public RecipeModel getRecipesForCode(String code);
+
+	public RecipeModel getRecipesForName(String name);
+
+
 }

@@ -20,7 +20,7 @@ public interface IngredientDao
 {
 	List<IngredientModel> findIngredients();
 
-	List<IngredientModel> findIngredientsByCode(String code);
+	IngredientModel findIngredientsByCode(String code);
 
 	//	List<IngredientModel> findIngredientsByQuantity(Double quantity);
 
