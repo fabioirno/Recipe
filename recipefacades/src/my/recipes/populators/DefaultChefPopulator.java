@@ -19,7 +19,7 @@ import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 import org.springframework.beans.factory.annotation.Required;
 
-import my.recipes.facades.ChefData;
+import my.recipes.facades.data.ChefData;
 import my.recipes.model.ChefModel;
 
 public class DefaultChefPopulator implements Populator<ChefModel, ChefData>

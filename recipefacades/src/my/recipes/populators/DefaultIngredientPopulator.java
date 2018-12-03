@@ -14,7 +14,7 @@ package my.recipes.populators;
 import de.hybris.platform.converters.Populator;
 import de.hybris.platform.servicelayer.dto.converter.ConversionException;
 
-import my.recipes.facades.IngredientData;
+import my.recipes.facades.data.IngredientData;
 import my.recipes.model.IngredientModel;
 
 

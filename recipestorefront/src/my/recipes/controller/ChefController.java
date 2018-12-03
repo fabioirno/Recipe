@@ -19,8 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import my.recipes.facades.ChefData;
 import my.recipes.facades.ChefFacade;
+import my.recipes.facades.data.ChefData;
 
 
 public class ChefController

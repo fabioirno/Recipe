@@ -19,8 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import my.recipes.facades.IngredientData;
 import my.recipes.facades.IngredientFacade;
+import my.recipes.facades.data.IngredientData;
 
 
 public class IngredientController

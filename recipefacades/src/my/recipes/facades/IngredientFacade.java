@@ -13,6 +13,8 @@ package my.recipes.facades;
 
 import java.util.List;
 
+import my.recipes.facades.data.IngredientData;
+
 
 public interface IngredientFacade
 {

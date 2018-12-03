@@ -17,8 +17,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Required;
 
-import my.recipes.facades.IngredientData;
 import my.recipes.facades.IngredientFacade;
+import my.recipes.facades.data.IngredientData;
 import my.recipes.model.IngredientModel;
 import my.recipes.service.IngredientService;
 

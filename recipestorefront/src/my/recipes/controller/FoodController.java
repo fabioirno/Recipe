@@ -17,8 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import my.recipes.facades.FoodData;
 import my.recipes.facades.FoodFacade;
+import my.recipes.facades.data.FoodData;
 
 
 
@@ -54,7 +54,7 @@ public class FoodController
 	final Model model, final Double Kcal)
 	{
 
-		final List<FoodData> foods = foodFacade.getFoodsfForKcal(Kcal);
+		final List<FoodData> foods = foodFacade.getFoodsForKcal(Kcal);
 
 		model.addAttribute("foods", foods);
 

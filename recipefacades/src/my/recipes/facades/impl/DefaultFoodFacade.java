@@ -17,8 +17,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Required;
 
-import my.recipes.facades.FoodData;
 import my.recipes.facades.FoodFacade;
+import my.recipes.facades.data.FoodData;
 import my.recipes.model.FoodModel;
 import my.recipes.service.FoodService;
 
@@ -38,7 +38,7 @@ public class DefaultFoodFacade implements FoodFacade
 	}
 
 	@Override
-	public List<FoodData> getFoodsfForKcal(final Double Kcal)
+	public List<FoodData> getFoodsForKcal(final Double Kcal)
 	{
 		final List<FoodModel> foods = getFoodService().getFoodsForKcal(Kcal);
 		return getFoodModelToDataConverter().convertAll(foods);

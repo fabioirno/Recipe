@@ -17,8 +17,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Required;
 
-import my.recipes.facades.ChefData;
 import my.recipes.facades.ChefFacade;
+import my.recipes.facades.data.ChefData;
 import my.recipes.model.ChefModel;
 import my.recipes.service.ChefService;
 
