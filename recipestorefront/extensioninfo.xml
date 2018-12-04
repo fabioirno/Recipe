@@ -10,17 +10,18 @@
  license agreement you entered into with SAP.
 --><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
 
-   <extension abstractclassprefix="Generated" classprefix="Recipefacades" managername="RecipefacadesManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="recipefacades" usemaven="false">
+   <extension abstractclassprefix="Generated" classprefix="Recipestorefront" managername="RecipestorefrontManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="recipestorefront" usemaven="false">
       <!-- for more information on maven managed libraries please consult https://wiki.hybris.com/x/Nq8sDQ -->
                
-      <!-- you should add all required extensions to this list, except platform extensions which are automatically required -->         
-      <!-- <requires-extension name="cms"/> --> 
-      <requires-extension name="recipes"/>       
+      <!-- you should add all required extensions to this list, except platform extensions which are automatically required -->
+      
+                    
+      <requires-extension name="recipefacades"/>    
       
 
-      <coremodule generated="true" manager="my.recipes.jalo.RecipefacadesManager" packageroot="my.recipes"/>
+      <coremodule generated="true" manager="my.recipes.jalo.RecipestorefrontManager" packageroot="my.recipes"/>
 
-      <!-- <webmodule jspcompile="false" webroot="/recipefacades"/> -->
+      <webmodule jspcompile="false" webroot="/recipestorefront/"/>
 					
 	
 
