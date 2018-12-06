@@ -35,7 +35,7 @@
     
     <alias name="defaultRecipeConverter" alias= "recipeModelToDataConverter" />
     <bean id= "defaultRecipeConverter" parent= "abstractPopulatingConverter" >
-    	<lookup-method name="createTarget" bean="recipeData "/>
+    	<lookup-method name="createTarget" bean="recipeData"/>
     	<property name="populators" >
     		<list>
     			<ref bean="recipePopulator" />
@@ -56,7 +56,7 @@
     
     <alias name="defaultChefConverter" alias= "chefModelToDataConverter" />
     <bean id= "defaultChefConverter" parent= "abstractPopulatingConverter" >
-    	<lookup-method name="createTarget" bean="chefData "/>
+    	<lookup-method name="createTarget" bean="chefData"/>
     	<property name="populators" >
     		<list>
     			<ref bean="chefPopulator" />
@@ -79,7 +79,7 @@
     
     <alias name="defaultFoodConverter" alias= "foodModelToDataConverter" />
     <bean id= "defaultFoodConverter" parent= "abstractPopulatingConverter" >
-    	<lookup-method name="createTarget" bean="foodData "/>
+    	<lookup-method name="createTarget" bean="foodData"/>
     	<property name="populators" >
     		<list>
     			<ref bean="foodPopulator" />
@@ -101,7 +101,7 @@
     
     <alias name="defaultIngredientConverter" alias= "ingredientModelToDataConverter" />
     <bean id= "defaultIngredientConverter" parent= "abstractPopulatingConverter" >
-    	<lookup-method name="createTarget" bean="ingredientData "/>
+    	<lookup-method name="createTarget" bean="ingredientData"/>
     	<property name="populators" >
     		<list>
     			<ref bean="ingredientPopulator" />
@@ -114,7 +114,7 @@
     	
     
    <alias alias="ingredientFacade" name="defaultiIngredientFacade" />
-    <bean id = "defaultIngredientFacade" class="my.recipes.facades.impl.DefaultIngredientFacade" >
+    <bean id="defaultIngredientFacade" class="my.recipes.facades.impl.DefaultIngredientFacade" >
     <property name="ingredientService" ref="ingredientService"/>
     <property name="ingredientModelToDataConverter" ref="ingredientModelToDataConverter"/>
     </bean>

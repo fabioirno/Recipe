@@ -20,7 +20,7 @@
 
       <coremodule generated="true" manager="my.recipes.jalo.RecipefacadesManager" packageroot="my.recipes"/>
 
-      <webmodule jspcompile="false" webroot="/recipefacades"/>
+      <!-- <webmodule jspcompile="false" webroot="/recipefacades"/> -->
 					
 	
 

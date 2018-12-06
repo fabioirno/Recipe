@@ -40,7 +40,7 @@ public class RecipestorefrontManager extends GeneratedRecipestorefrontManager
 
 	/**
 	 * Get the valid instance of this manager.
-	 * 
+	 *
 	 * @return the current instance of this manager
 	 */
 	public static RecipestorefrontManager getInstance()
@@ -54,7 +54,7 @@ public class RecipestorefrontManager extends GeneratedRecipestorefrontManager
 	 * Never call the constructor of any manager directly, call getInstance() You can place your business logic here -
 	 * like registering a jalo session listener. Each manager is created once for each tenant.
 	 */
-	public RecipestorefrontManager() // NOPMD 
+	public RecipestorefrontManager() // NOPMD
 	{
 		LOG.debug("constructor of RecipestorefrontManager called.");
 	}
@@ -85,7 +85,7 @@ public class RecipestorefrontManager extends GeneratedRecipestorefrontManager
 	 * Implement this method to create initial objects. This method will be called by system creator during
 	 * initialization and system update. Be sure that this method can be called repeatedly. An example usage of this
 	 * method is to create required cronjobs or modifying the type system (setting e.g some default values)
-	 * 
+	 *
 	 * @param params
 	 *           the parameters provided by user for creation of objects for the extension
 	 * @param jspc
@@ -101,7 +101,7 @@ public class RecipestorefrontManager extends GeneratedRecipestorefrontManager
 	 * Implement this method to create data that is used in your project. This method will be called during the system
 	 * initialization. An example use is to import initial data like currencies or languages for your project from an csv
 	 * file.
-	 * 
+	 *
 	 * @param params
 	 *           the parameters provided by user for creation of objects for the extension
 	 * @param jspc

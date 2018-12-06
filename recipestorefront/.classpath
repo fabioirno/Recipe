@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="C:/Users/firno/Desktop/Hybris 5/lib/spring-webmvc-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="C:/Users/firno/Desktop/Hybris 5/lib/standard.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/recipefacades"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/acceleratorstorefrontcommons"/>
 	<classpathentry kind="output" path="eclipsebin/notused"/>
 </classpath>
