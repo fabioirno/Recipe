@@ -13,6 +13,7 @@ package my.recipes.controller;
 
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ import my.recipes.facades.FoodFacade;
 import my.recipes.facades.data.FoodData;
 
 
-
+@Controller
 public class FoodController
 {
 	private FoodFacade foodFacade;

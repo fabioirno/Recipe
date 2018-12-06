@@ -14,23 +14,27 @@ package my.recipes.controller;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import my.recipes.facades.RecipeFacade;
 import my.recipes.facades.data.RecipeData;
 
 
 @Controller
+@RequestMapping(value = "/welcome")
 public class RecipesController
 {
 
+	@Resource(name = "recipeFacade")
 	private RecipeFacade recipeFacade;
 
-	@RequestMapping(value = "/recipes")
+	@RequestMapping(value = "/recipes", method = RequestMethod.GET)
 	public String showRecipes(final Model model)
 	{
 
@@ -41,7 +45,8 @@ public class RecipesController
 		return "RecipesListing";
 	}
 
-	@RequestMapping(value = "/recipes/{recipeName}")
+
+	@RequestMapping(value = "/recipes/{recipeName}", method = RequestMethod.GET)
 	public String showRecipesDetails(@PathVariable final
 	String recipeName, final Model model) throws UnsupportedEncodingException
 	{
@@ -64,16 +69,5 @@ public class RecipesController
 
 		return "RecipeDetailCode";
 	}
-
-
-
-	@Autowired
-	public void setRecipeFacade(final RecipeFacade recipeFacade)
-	{
-		this.recipeFacade = recipeFacade;
-	}
-
-
-
 
 }

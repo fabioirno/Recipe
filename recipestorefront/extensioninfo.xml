@@ -11,17 +11,22 @@
 --><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
 
    <extension abstractclassprefix="Generated" classprefix="Recipestorefront" managername="RecipestorefrontManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="recipestorefront" usemaven="false">
+      
+      
       <!-- for more information on maven managed libraries please consult https://wiki.hybris.com/x/Nq8sDQ -->
                
       <!-- you should add all required extensions to this list, except platform extensions which are automatically required -->
       
                     
+      <requires-extension name="acceleratorstorefrontcommons"/> 
       <requires-extension name="recipefacades"/>    
       
 
       <coremodule generated="true" manager="my.recipes.jalo.RecipestorefrontManager" packageroot="my.recipes"/>
 
-      <webmodule jspcompile="false" webroot="/recipestorefront/"/>
+      <webmodule jspcompile="false" webroot="/recipestorefront"/>
+      
+      <meta key="extgen-template-extension" value="true"/>
 					
 	
 

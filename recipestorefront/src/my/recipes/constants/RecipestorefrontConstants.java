@@ -24,5 +24,5 @@ public final class RecipestorefrontConstants extends GeneratedRecipestorefrontCo
 
 	// implement here constants used by this extension
 
-    public static final String PLATFORM_LOGO_CODE = "recipestorefrontPlatformLogo";
+	public static final String PLATFORM_LOGO_CODE = "recipestorefrontPlatformLogo";
 }
