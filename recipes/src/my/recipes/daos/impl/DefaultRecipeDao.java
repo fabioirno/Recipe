@@ -13,6 +13,7 @@ package my.recipes.daos.impl;
 
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.FlexibleSearchService;
+import de.hybris.platform.servicelayer.search.SearchResult;
 
 import java.util.List;
 
@@ -48,7 +49,11 @@ public class DefaultRecipeDao implements RecipeDao
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
 
-		return flexibleSearchService.<RecipeModel> search(query).getResult();
+		final SearchResult<RecipeModel> result = getFlexibleSearchService().search(query);
+
+		final List<RecipeModel> recipes = result.getResult();
+
+		return recipes;
 
 	} //end
 
@@ -63,9 +68,14 @@ public class DefaultRecipeDao implements RecipeDao
 				+ "{p:" + RecipeModel.CODE + "} = ?code";
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
+
 		query.addQueryParameter("code", code);
 
-		return (RecipeModel) flexibleSearchService.search(query).getResult();
+		final SearchResult<RecipeModel> result = getFlexibleSearchService().search(query);
+
+		final List<RecipeModel> recipes = result.getResult();
+
+		return recipes.get(0);
 
 	} // end
 
@@ -79,7 +89,11 @@ public class DefaultRecipeDao implements RecipeDao
 				final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
 				query.addQueryParameter("name", name);
 
-		return (RecipeModel) flexibleSearchService.search(query).getResult();
+		final SearchResult<RecipeModel> result = getFlexibleSearchService().search(query);
+
+		final List<RecipeModel> recipes = result.getResult();
+
+		return recipes.get(0);
 
 	} // end
 
@@ -88,6 +102,14 @@ public class DefaultRecipeDao implements RecipeDao
 	public void setFlexibleSearchService(final FlexibleSearchService flexibleSearchService)
 	{
 		this.flexibleSearchService = flexibleSearchService;
+	}
+
+	/**
+	 * @return the flexibleSearchService
+	 */
+	public FlexibleSearchService getFlexibleSearchService()
+	{
+		return flexibleSearchService;
 	}
 
 

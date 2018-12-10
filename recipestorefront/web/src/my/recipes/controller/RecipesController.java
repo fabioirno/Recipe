@@ -27,14 +27,14 @@ import my.recipes.facades.data.RecipeData;
 
 
 @Controller
-@RequestMapping(value = "/welcome")
+@RequestMapping(value = "/recipes")
 public class RecipesController
 {
 
 	@Resource(name = "recipeFacade")
 	private RecipeFacade recipeFacade;
 
-	@RequestMapping(value = "/recipes", method = RequestMethod.GET)
+	@RequestMapping(value = "/recipesListing", method = RequestMethod.GET)
 	public String showRecipes(final Model model)
 	{
 
@@ -46,9 +46,8 @@ public class RecipesController
 	}
 
 
-	@RequestMapping(value = "/recipes/{recipeName}", method = RequestMethod.GET)
-	public String showRecipesDetails(@PathVariable final
-	String recipeName, final Model model) throws UnsupportedEncodingException
+	@RequestMapping(value = "/recipeForName/{recipeName}", method = RequestMethod.GET)
+	public String showRecipesDetails(@PathVariable final String recipeName, final Model model) throws UnsupportedEncodingException
 	{
 
 		final RecipeData recipe = recipeFacade.getRecipeForName(recipeName);
@@ -58,7 +57,7 @@ public class RecipesController
 		return "RecipeDetail";
 	}
 
-	@RequestMapping(value = "/recipes/{recipeCode}")
+	@RequestMapping(value = "/recipeForCode/{recipeCode}", method = RequestMethod.GET)
 	public String showRecipeForCode(@PathVariable
 	final String recipeCode, final Model model) throws UnsupportedEncodingException
 	{
