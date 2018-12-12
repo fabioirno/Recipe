@@ -44,7 +44,9 @@
     </bean>
     
     <alias alias="recipePopulator" name="defaultRecipePopulator" />
-    <bean id = "defaultRecipePopulator" class="my.recipes.populators.DefaultRecipePopulator" />
+    <bean id = "defaultRecipePopulator" class="my.recipes.populators.DefaultRecipePopulator" >
+    <property name="ingredientModelToDataConverter" ref="ingredientModelToDataConverter"/>
+    </bean>
     
    <alias alias="recipeFacade" name="defaultRecipeFacade" />
     <bean id = "defaultRecipeFacade" class="my.recipes.facades.impl.DefaultRecipeFacade" >
@@ -110,7 +112,9 @@
     </bean>
     
     <alias alias="ingredientPopulator" name="defaultIngredientPopulator" />
-    <bean id = "defaultIngredientPopulator" class="my.recipes.populators.DefaultIngredientPopulator" />
+    <bean id = "defaultIngredientPopulator" class="my.recipes.populators.DefaultIngredientPopulator" >
+    <property name="foodModelToDataConverter" ref="foodModelToDataConverter"/>
+    </bean>
     	
     
    <alias alias="ingredientFacade" name="defaultiIngredientFacade" />
