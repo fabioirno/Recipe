@@ -15,6 +15,12 @@
                 <tr><td>${ingredient.food.name}</td><td>${ingredient.quantity}</td></tr>
               </c:forEach>
         </table>
+                 <c:forEach var="c" items="${recipe.chef}">
+        <br> Chef: <a href="/recipestorefront/chefs/chefForName/${c.name}">${c.name}</a>  <br>
+        
+      </c:forEach>
+      <br><br>
+      
         <a href="../recipesListing">Back to Lista delle ricette</a>
     </body>
 </html>

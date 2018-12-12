@@ -24,6 +24,7 @@
 		<property name="time" type="java.lang.Double" />			
 		<property name="totalCals" type="java.lang.Double" />
 		<property name="ingredients" type="java.util.List&lt;my.recipes.facades.data.IngredientData>" />
+		<property name="chef" type="java.util.List&lt;my.recipes.facades.data.ChefData>" />
 	</bean>
 	
 	<bean class="my.recipes.facades.data.ChefData">

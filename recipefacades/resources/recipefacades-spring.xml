@@ -46,6 +46,7 @@
     <alias alias="recipePopulator" name="defaultRecipePopulator" />
     <bean id = "defaultRecipePopulator" class="my.recipes.populators.DefaultRecipePopulator" >
     <property name="ingredientModelToDataConverter" ref="ingredientModelToDataConverter"/>
+    <property name="chefModelToDataConverter" ref="chefModelToDataConverter"/>
     </bean>
     
    <alias alias="recipeFacade" name="defaultRecipeFacade" />
