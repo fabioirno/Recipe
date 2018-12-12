@@ -13,6 +13,7 @@ package my.recipes.daos.impl;
 
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.FlexibleSearchService;
+import de.hybris.platform.servicelayer.search.SearchResult;
 
 import java.util.List;
 
@@ -39,7 +40,11 @@ public class DefaultChefDao implements ChefDao
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
 
-		return flexibleSearchService.<ChefModel> search(query).getResult();
+		final SearchResult<ChefModel> result = getFlexibleSearchService().search(query);
+
+		final List<ChefModel> chefs = result.getResult();
+
+		return chefs;
 
 	} //end
 
@@ -51,9 +56,14 @@ public class DefaultChefDao implements ChefDao
 				+ ChefModel.RATING + "} = ?rating";
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
+
 		query.addQueryParameter("rating", rating);
 
-		return flexibleSearchService.<ChefModel> search(query).getResult();
+		final SearchResult<ChefModel> result = getFlexibleSearchService().search(query);
+
+		final List<ChefModel> chefs = result.getResult();
+
+		return chefs;
 
 	}// end
 
@@ -65,9 +75,14 @@ public class DefaultChefDao implements ChefDao
 				+ ChefModel.NAME + "} = ?name";
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
+
 		query.addQueryParameter("name", name);
 
-		return (ChefModel) flexibleSearchService.search(query).getResult();
+		final SearchResult<ChefModel> result = getFlexibleSearchService().search(query);
+
+		final List<ChefModel> chefs = result.getResult();
+
+		return chefs.get(0);
 
 	} // end
 
@@ -76,5 +91,15 @@ public class DefaultChefDao implements ChefDao
 	{
 		this.flexibleSearchService = flexibleSearchService;
 	}
+
+	/**
+	 * @return the flexibleSearchService
+	 */
+	public FlexibleSearchService getFlexibleSearchService()
+	{
+		return flexibleSearchService;
+	}
+
+
 
 }

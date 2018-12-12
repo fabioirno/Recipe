@@ -14,24 +14,29 @@ package my.recipes.controller;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import my.recipes.facades.ChefFacade;
 import my.recipes.facades.data.ChefData;
 
 
 @Controller
+@RequestMapping(value = "/chefs")
 public class ChefController
 {
 
+	@Resource(name = "chefFacade")
 	private ChefFacade chefFacade;
 
-	@RequestMapping(value = "/chefs")
-	public String showChefs(final Model model) {
+	@RequestMapping(value = "/chefsListing", method = RequestMethod.GET)
+	public String showChefs(final Model model)
+	{
 
 		final List<ChefData> chefs = chefFacade.getAllChefs();
 
@@ -40,7 +45,7 @@ public class ChefController
 		return "ChefsListing";
 	}
 
-	@RequestMapping(value = "/chefs/{chefName}")
+	@RequestMapping(value = "/chefForName/{chefName}", method = RequestMethod.GET)
 	public String showChefsDetails(@PathVariable
 	final String chefName, final Model model) throws UnsupportedEncodingException
 	{
@@ -50,24 +55,6 @@ public class ChefController
 		model.addAttribute("chef", chef);
 
 		return "ChefDetail";
-	}
-
-	@RequestMapping(value = "/chefs/{chefRating}")
-	public String showChefsRating(@PathVariable
-	final Integer rating, final Model model) throws UnsupportedEncodingException
-	{
-
-		final List<ChefData> chef = chefFacade.getChefsForRating(rating);
-
-		model.addAttribute("chef", chef);
-
-		return "ChefRating";
-	}
-
-	@Autowired
-	public void setChefFacade(final ChefFacade chefFacade)
-	{
-		this.chefFacade = chefFacade;
 	}
 
 

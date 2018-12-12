@@ -28,7 +28,7 @@
 	<bean class="my.recipes.facades.data.ChefData">
 		<property name="name" type="String" />
 		<property name="rating" type="java.lang.Integer" />
-		<property name="address" type="de.hybris.platform.commercefacades.user.data.AddressData" /> 
+		<property name="address" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.AddressData>" /> 
 	</bean>
 	
 	<bean class="my.recipes.facades.data.FoodData">

@@ -31,8 +31,9 @@ public class DefaultChefPopulator implements Populator<ChefModel, ChefData>
 	public void populate(final ChefModel source, final ChefData target) throws ConversionException
 	{
 		  target.setName(source.getName());
-		  target.setRating(source.getRating());
-		target.setAddress(addressModelToDataConverter.convert(source.getAddress()));
+		target.setRating(source.getRating());
+		target.setAddress(addressModelToDataConverter.convertAll(source.getAddresses()));
+
 
 
 	}
