@@ -9,6 +9,7 @@
  		Votazione: ${recipe.rating}<br><br>
  		Porzione: ${recipe.servings}<br><br>
  		Tempo: ${recipe.time}<br><br>
+ 		Calorie: ${recipe.totalCals}<br><br>
  		<table border="1" width="500" cellpadding="5" cellspacing="0">
  				<tr><td>Ingrediente</td><td>Quantità</td></tr>
  		       <c:forEach var="ingredient" items="${recipe.ingredients}">
