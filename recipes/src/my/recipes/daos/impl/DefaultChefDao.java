@@ -86,6 +86,25 @@ public class DefaultChefDao implements ChefDao
 
 	} // end
 
+	@Override
+	public List<ChefModel> orderChefsByRating()
+	{
+		// Build a query for the flexible search.
+		final String queryString = "SELECT {p:" + ChefModel.PK + "} " + "FROM {" + ChefModel._TYPECODE + " AS p }" + "ORDER BY {"
+				+ ChefModel.RATING + "}" + "ASC";
+
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
+
+		final SearchResult<ChefModel> result = getFlexibleSearchService().search(query);
+
+		final List<ChefModel> chefs = result.getResult();
+
+		return chefs;
+	}
+
+
+
+
 	@Required
 	public void setFlexibleSearchService(final FlexibleSearchService flexibleSearchService)
 	{
@@ -99,6 +118,7 @@ public class DefaultChefDao implements ChefDao
 	{
 		return flexibleSearchService;
 	}
+
 
 
 

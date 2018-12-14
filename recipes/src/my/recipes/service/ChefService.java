@@ -27,5 +27,7 @@ public interface ChefService
 
 	public ChefModel getChefForName(String name);
 
+	public List<ChefModel> getChefsOrderForRating();
+
 
 }

@@ -57,6 +57,37 @@ public class ChefController
 		return "ChefDetail";
 	}
 
+	@RequestMapping(value = "/chefsOrderByRating", method = RequestMethod.GET)
+	public String showChefsOrderByRating(final Model model)
+	{
+
+		final List<ChefData> chefs = chefFacade.getChefsOrderForRating();
+
+		model.addAttribute("chefs", chefs);
+
+		return "ChefsOrderByRating";
+
+	}
+
+	/*
+	 * This is the same controller of showChefsOrderByRating but we order the chefs with a lampda expression
+	 * 
+	 * @RequestMapping(value = "/chefsTestRating", method = RequestMethod.GET) public String showChefsTestRating(final
+	 * Model model) {
+	 * 
+	 * final List<ChefData> chefs = chefFacade.getChefsOrderForRating();
+	 * 
+	 * chefs.stream() .sorted((o1, o2) -> o1.getRating().toString().compareTo(o2.getRating().toString()))
+	 * .collect(Collectors.toList());
+	 * 
+	 * model.addAttribute("chefs", chefs);
+	 * 
+	 * return "ChefsOrderByRating";
+	 * 
+	 * }
+	 * 
+	 */
+
 
 
 }

@@ -43,12 +43,19 @@ public class DefaultChefService implements ChefService
 		return chefDao.findChefByName(name);
 	}
 
+	@Override
+	public List<ChefModel> getChefsOrderForRating()
+	{
+		return chefDao.orderChefsByRating();
+	}
+
 
 	@Required
 	public void setChefDao(final ChefDao chefDao)
 	{
 		this.chefDao = chefDao;
 	}
+
 
 
 

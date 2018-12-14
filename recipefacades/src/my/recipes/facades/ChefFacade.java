@@ -25,5 +25,7 @@ public interface ChefFacade
 
 	ChefData getChefForName(String name);
 
+	List<ChefData> getChefsOrderForRating();
+
 
 }

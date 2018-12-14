@@ -6,5 +6,7 @@
 		
 		<br><a href="chefs/chefsListing">Go to Lista degli chef<br></a>
 		
+		<br><a href="chefs/chefsOrderByRating">Go to Lista degli chef ordinata per rating<br></a>
+		
 		</body>
 </html>
