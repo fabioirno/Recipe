@@ -24,7 +24,9 @@
     <list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
         <list:column qualifier="name"/>
         <list:column qualifier="time"/>
+        <list:column qualifier="servings"/>        
         <list:column qualifier="totalCals"/>
+        
     </list:list-view>
 </context>
 
