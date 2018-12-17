@@ -16,6 +16,8 @@
         <n:navigation-node id="Recipe">
             <n:type-node id="Recipe" code="Recipe" />
             <n:type-node id="Chef" code="Chef" />
+            <n:type-node id="Food" code="Food" />
+            <n:type-node id="Ingredient" code="Ingredient" />
         </n:navigation-node>
     </n:explorer-tree>
 </context>
@@ -26,8 +28,29 @@
         <list:column qualifier="time"/>
         <list:column qualifier="servings"/>        
         <list:column qualifier="totalCals"/>
-        
     </list:list-view>
 </context>
+
+<context type="Chef" component="listview">
+    <list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
+        <list:column qualifier="name"/>
+        <list:column qualifier="rating"/>        
+    </list:list-view>
+</context>
+
+<context type="Food" component="listview">
+    <list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
+        <list:column qualifier="name"/>
+        <list:column qualifier="kcal"/>        
+    </list:list-view>
+</context>
+
+<context type="Ingredient" component="listview">
+    <list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
+        <list:column qualifier="food"/>
+        <list:column qualifier="quantity"/>        
+    </list:list-view>
+</context>
+
 
 </config>
