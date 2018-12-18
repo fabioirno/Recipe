@@ -24,4 +24,6 @@ public interface ChefDao
 
 	ChefModel findChefByName(String name);
 
+	List<ChefModel> orderChefsByRating();
+
 }

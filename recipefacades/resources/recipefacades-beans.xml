@@ -23,12 +23,14 @@
 		<property name="servings" type="java.lang.Integer" />
 		<property name="time" type="java.lang.Double" />			
 		<property name="totalCals" type="java.lang.Double" />
+		<property name="ingredients" type="java.util.List&lt;my.recipes.facades.data.IngredientData>" />
+		<property name="chef" type="java.util.List&lt;my.recipes.facades.data.ChefData>" />
 	</bean>
 	
 	<bean class="my.recipes.facades.data.ChefData">
 		<property name="name" type="String" />
 		<property name="rating" type="java.lang.Integer" />
-		<property name="address" type="de.hybris.platform.commercefacades.user.data.AddressData" /> 
+		<property name="address" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.AddressData>" /> 
 	</bean>
 	
 	<bean class="my.recipes.facades.data.FoodData">
@@ -40,6 +42,7 @@
 	<bean class="my.recipes.facades.data.IngredientData">
 		<property name="code" type="String" />
 		<property name="quantity" type="java.lang.Double" />
+		<property name="food" type="my.recipes.facades.data.FoodData" />
 	</bean>
 	
 			

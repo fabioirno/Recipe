@@ -1,13 +1,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html>
-<title>Chefs Listing</title>
+<title>Lista degli chef</title>
 <body>
-	<h1>Chefs Listing</h1>
+	<h1>Lista degli chef</h1>
 	<ul>
-		<c:forEach var="chefs" items="${chefs}">
-			<li><a href="./chefs/${chefs.name}">${chefs.name}</a></li>
-		</c:forEach>
+		 <c:forEach var="chefs" items="${chefs}">
+			<li><a href="./chefForName/${chefs.name}">${chefs.name}</a></li>
+		</c:forEach> 
 	</ul>
+	<a href="../">Back to Home</a>
 </body>
 </html>

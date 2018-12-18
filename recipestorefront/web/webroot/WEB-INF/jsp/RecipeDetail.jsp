@@ -1,14 +1,27 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
-    <title>Recipe Details</title>
+    <title>Dettaglio della ricetta</title>
     <body>
-        <h1>Recipe Details</h1>
+        <h1>Dettaglio della ricetta</h1>
         Name: ${recipe.name}<br><br> 
- 		Difficulty: ${recipe.difficulty}<br><br>
- 		Rating: ${recipe.rating}<br><br>
- 		Servings: ${recipe.servings}<br><br>
- 		Time: ${recipe.time}<br><br>
-        <a href="../recipes">Back to Recipes Listing</a>
+ 		Difficoltà: ${recipe.difficulty}<br><br>
+ 		Votazione: ${recipe.rating}<br><br>
+ 		Porzione: ${recipe.servings}<br><br>
+ 		Tempo: ${recipe.time}<br><br>
+ 		Calorie: ${recipe.totalCals}<br><br>
+ 		<table border="1" width="500" cellpadding="5" cellspacing="0">
+ 				<tr><td>Ingrediente</td><td>Quantità</td></tr>
+ 		       <c:forEach var="ingredient" items="${recipe.ingredients}">
+                <tr><td>${ingredient.food.name}</td><td>${ingredient.quantity}</td></tr>
+              </c:forEach>
+        </table>
+                 <c:forEach var="c" items="${recipe.chef}">
+        <br> Chef: <a href="/recipestorefront/chefs/chefForName/${c.name}">${c.name}</a>  <br>
+        
+      </c:forEach>
+      <br><br>
+      
+        <a href="../recipesListing">Back to Lista delle ricette</a>
     </body>
 </html>

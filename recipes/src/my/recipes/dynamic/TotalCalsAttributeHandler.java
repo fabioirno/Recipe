@@ -27,7 +27,7 @@ public class TotalCalsAttributeHandler implements DynamicAttributeHandler<Double
 
 	private Double cal = new Double(0);
 
-	private Double totalCals = new Double(0);
+	Double totalCals = new Double(0);
 
 	private Double quantity = new Double(0);
 
@@ -35,6 +35,7 @@ public class TotalCalsAttributeHandler implements DynamicAttributeHandler<Double
 	@Override
 	public Double get(final RecipeModel var1)
 	{
+		totalCals = (double) 0;
 
 		final List<IngredientModel> ingredients = (List<IngredientModel>) var1.getIngredients();
 
@@ -49,7 +50,7 @@ public class TotalCalsAttributeHandler implements DynamicAttributeHandler<Double
 
 		});
 
-		 return totalCals;
+		return Math.round(totalCals * 100.0d) / 100.0d;
 
 	}
 

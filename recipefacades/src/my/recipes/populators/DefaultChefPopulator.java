@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Required;
 import my.recipes.facades.data.ChefData;
 import my.recipes.model.ChefModel;
 
+
 public class DefaultChefPopulator implements Populator<ChefModel, ChefData>
 {
 
@@ -31,8 +32,9 @@ public class DefaultChefPopulator implements Populator<ChefModel, ChefData>
 	public void populate(final ChefModel source, final ChefData target) throws ConversionException
 	{
 		  target.setName(source.getName());
-		  target.setRating(source.getRating());
-		target.setAddress(addressModelToDataConverter.convert(source.getAddress()));
+		target.setRating(source.getRating());
+		target.setAddress(addressModelToDataConverter.convertAll(source.getAddresses()));
+
 
 
 	}

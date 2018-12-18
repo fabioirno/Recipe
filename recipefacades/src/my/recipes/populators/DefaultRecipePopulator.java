@@ -13,8 +13,15 @@ package my.recipes.populators;
 
 import de.hybris.platform.converters.Populator;
 import de.hybris.platform.servicelayer.dto.converter.ConversionException;
+import de.hybris.platform.servicelayer.dto.converter.Converter;
 
+import org.springframework.beans.factory.annotation.Required;
+
+import my.recipes.facades.data.ChefData;
+import my.recipes.facades.data.IngredientData;
 import my.recipes.facades.data.RecipeData;
+import my.recipes.model.ChefModel;
+import my.recipes.model.IngredientModel;
 import my.recipes.model.RecipeModel;
 
 
@@ -23,6 +30,9 @@ import my.recipes.model.RecipeModel;
  */
 public class DefaultRecipePopulator implements Populator<RecipeModel, RecipeData>
 {
+	private Converter<IngredientModel, IngredientData> ingredientModelToDataConverter;
+
+	private Converter<ChefModel, ChefData> chefModelToDataConverter;
 
 	@Override
 	public void populate(final RecipeModel source, final RecipeData target) throws ConversionException
@@ -34,6 +44,41 @@ public class DefaultRecipePopulator implements Populator<RecipeModel, RecipeData
 		target.setServings(source.getServings());
 		target.setTime(source.getTime());
 		target.setTotalCals(source.getTotalCals());
+		target.setIngredients(getIngredientModelToDataConverter().convertAll(source.getIngredients()));
+		target.setChef(getChefModelToDataConverter().convertAll(source.getChefs()));
+
 	}
+
+	/**
+	 * @return the ingredientModelToDataConverter
+	 */
+	public Converter<IngredientModel, IngredientData> getIngredientModelToDataConverter()
+	{
+		return ingredientModelToDataConverter;
+	}
+
+	@Required
+	public void setIngredientModelToDataConverter(final Converter<IngredientModel, IngredientData> ingredientModelToDataConverter)
+	{
+		this.ingredientModelToDataConverter = ingredientModelToDataConverter;
+	}
+
+	/**
+	 * @return the chefModelToDataConverter
+	 */
+	public Converter<ChefModel, ChefData> getChefModelToDataConverter()
+	{
+		return chefModelToDataConverter;
+	}
+
+	@Required
+	public void setChefModelToDataConverter(final Converter<ChefModel, ChefData> chefModelToDataConverter)
+	{
+		this.chefModelToDataConverter = chefModelToDataConverter;
+	}
+
+
+
+
 
 }

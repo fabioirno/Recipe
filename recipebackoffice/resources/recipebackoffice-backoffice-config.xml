@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<config xmlns="http://www.hybris.com/cockpit/config">
+
+	<context component="explorer-tree" merge-by="module">
+  <n:explorer-tree xmlns:n="http://www.hybris.com/cockpitng/config/explorertree">
+        <n:navigation-node id="Recipe">
+            <n:type-node id="Recipe" code="Recipe" />
+            <n:type-node id="Chef" code="Chef" />
+            <n:type-node id="Food" code="Food" />
+            <n:type-node id="Ingredient" code="Ingredient" />
+        </n:navigation-node>
+    </n:explorer-tree>
+</context>
+
+<context merge-by="type" parent="GenericItem" type="Recipe" component="listview">
+    <list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
+        <list:column qualifier="name"/>
+        <list:column qualifier="time"/>
+        <list:column qualifier="rating" label="rating" auto-extract="true"/> 
+        <list:column qualifier="servings"/>          
+        <list:column qualifier="totalCals"/>
+    </list:list-view>
+</context>
+
+
+<context type="Chef" component="listview">
+    <list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
+        <list:column qualifier="name"/>
+        <list:column qualifier="rating"/>        
+    </list:list-view>
+</context>
+
+<context type="Food" component="listview">
+    <list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
+        <list:column qualifier="name"/>
+        <list:column qualifier="kcal"/>        
+    </list:list-view>
+</context>
+
+<context type="Ingredient" component="listview">
+    <list:list-view xmlns:list="http://www.hybris.com/cockpitng/component/listView">
+        <list:column qualifier="food"/>
+        <list:column qualifier="quantity"/>        
+    </list:list-view>
+</context>
+
+<context type="Recipe" component="simple-search">
+    <yss:simple-search xmlns:yss="http://www.hybris.com/cockpitng/config/simplesearch">
+        <yss:field name="name"/>
+        <yss:sort-field name="time" asc="true"/>
+    </yss:simple-search>
+</context>
+
+<context type="Recipe" component="advanced-search">
+    <as:advanced-search xmlns:as="http://www.hybris.com/cockpitng/config/advancedsearch" connection-operator="OR">
+        <as:field-list disable-attributes-comparator="false" disable-subtypes-checkbox="false">
+            <as:field name="name" operator="equals" selected="true"/>
+            <as:field name="time" operator="equals" selected="false"/>
+        </as:field-list>
+    <as:sort-field name="name" asc="false" />
+    </as:advanced-search>
+</context>
+
+
+</config>

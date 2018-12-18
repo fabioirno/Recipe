@@ -13,6 +13,7 @@ package my.recipes.daos.impl;
 
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.FlexibleSearchService;
+import de.hybris.platform.servicelayer.search.SearchResult;
 
 import java.util.List;
 
@@ -39,7 +40,11 @@ public class DefaultChefDao implements ChefDao
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
 
-		return flexibleSearchService.<ChefModel> search(query).getResult();
+		final SearchResult<ChefModel> result = getFlexibleSearchService().search(query);
+
+		final List<ChefModel> chefs = result.getResult();
+
+		return chefs;
 
 	} //end
 
@@ -51,9 +56,14 @@ public class DefaultChefDao implements ChefDao
 				+ ChefModel.RATING + "} = ?rating";
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
+
 		query.addQueryParameter("rating", rating);
 
-		return flexibleSearchService.<ChefModel> search(query).getResult();
+		final SearchResult<ChefModel> result = getFlexibleSearchService().search(query);
+
+		final List<ChefModel> chefs = result.getResult();
+
+		return chefs;
 
 	}// end
 
@@ -65,16 +75,51 @@ public class DefaultChefDao implements ChefDao
 				+ ChefModel.NAME + "} = ?name";
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
+
 		query.addQueryParameter("name", name);
 
-		return (ChefModel) flexibleSearchService.search(query).getResult();
+		final SearchResult<ChefModel> result = getFlexibleSearchService().search(query);
+
+		final List<ChefModel> chefs = result.getResult();
+
+		return chefs.get(0);
 
 	} // end
+
+	@Override
+	public List<ChefModel> orderChefsByRating()
+	{
+		// Build a query for the flexible search.
+		final String queryString = "SELECT {p:" + ChefModel.PK + "} " + "FROM {" + ChefModel._TYPECODE + " AS p }" + "ORDER BY {"
+				+ ChefModel.RATING + "}" + "ASC";
+
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
+
+		final SearchResult<ChefModel> result = getFlexibleSearchService().search(query);
+
+		final List<ChefModel> chefs = result.getResult();
+
+		return chefs;
+	}
+
+
+
 
 	@Required
 	public void setFlexibleSearchService(final FlexibleSearchService flexibleSearchService)
 	{
 		this.flexibleSearchService = flexibleSearchService;
 	}
+
+	/**
+	 * @return the flexibleSearchService
+	 */
+	public FlexibleSearchService getFlexibleSearchService()
+	{
+		return flexibleSearchService;
+	}
+
+
+
 
 }

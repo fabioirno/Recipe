@@ -52,6 +52,15 @@ public class DefaultChefFacade implements ChefFacade
 		return getChefModelToDataConverter().convert(chef);
 	}
 
+	@Override
+	public List<ChefData> getChefsOrderForRating()
+	{
+		final List<ChefModel> chefs = getChefService().getChefsOrderForRating();
+		return getChefModelToDataConverter().convertAll(chefs);
+	}
+
+
+
 	/**
 	 * @return the chefService
 	 */
@@ -79,7 +88,6 @@ public class DefaultChefFacade implements ChefFacade
 	{
 		this.chefModelToDataConverter = chefModelToDataConverter;
 	}
-
 
 
 
