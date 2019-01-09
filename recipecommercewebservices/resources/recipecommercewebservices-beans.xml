@@ -151,5 +151,48 @@
 		<property name="orderStatusUpdateElements"
 		          type="java.util.List&lt;my.recipes.queues.data.OrderStatusUpdateElementData>"/>
 	</bean>
+	
+	<!-- RecipeWsDTO -->
+	
+	<bean class="my.recipes.recipecommercewebservices.dto.recipe.RecipeWsDTO">
+		<property name="code" type="String" />
+		<property name="name" type="String" />
+		<property name="difficulty" type="String" />
+		<property name="rating" type="java.lang.Integer" />
+		<property name="servings" type="java.lang.Integer" />
+		<property name="time" type="java.lang.Double" />			
+		<property name="totalCals" type="java.lang.Double" />
+		<property name="ingredients" type="java.util.List&lt;my.recipes.recipecommercewebservices.dto.ingredient.IngredientWsDTO>" />
+		<property name="chef" type="java.util.List&lt;my.recipes.recipecommercewebservices.dto.chef.ChefWsDTO>" />
+	</bean>
+	
+	<!-- ChefWsDTO -->
+	
+	<bean class="my.recipes.recipecommercewebservices.dto.chef.ChefWsDTO">
+		<property name="name" type="String" />
+		<property name="rating" type="java.lang.Integer" />
+		<property name="address" type="java.util.List&lt;de.hybris.platform.commercewebservicescommons.dto.user.AddressWsDTO>" />
+	</bean>
+	
+	<!-- FoodWsDTO -->
+	
+	<bean class="my.recipes.recipecommercewebservices.dto.food.FoodWsDTO">
+		<property name="code" type="String" />
+		<property name="name" type="String" />
+		<property name="kcal" type="java.lang.Double" />
+	</bean>
+	
+	<!-- IngredientWsDTO -->
+	
+	<bean class="my.recipes.recipecommercewebservices.dto.ingredient.IngredientWsDTO">
+		<property name="code" type="String" />
+		<property name="quantity" type="java.lang.Double" />
+		<property name="food" type="my.recipes.recipecommercewebservices.dto.food.FoodWsDTO" />
+	</bean>
+	
+	
+	
+	
+	
 
 </beans>
