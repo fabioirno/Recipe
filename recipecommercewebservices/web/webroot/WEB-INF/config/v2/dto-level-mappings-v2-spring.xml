@@ -1502,4 +1502,62 @@
 		</property>
 	</bean>
 	
+	<!-- fieldSetLevelMapping of RecipeWsDTO -->
+	
+	<bean parent="fieldSetLevelMapping">
+        <property name="dtoClass"
+            value="my.recipes.recipecommercewebservices.dto.recipe.RecipeWsDTO" />
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="code,name,rating" />
+                <entry key="DEFAULT" value="BASIC,difficulty,time" />
+                <entry key="FULL" value="DEFAULT,servings,totalCals,ingredients(FULL),chef(FULL)" />
+            </map>
+        </property>
+    </bean>
+	
+	
+	<!-- fieldSetLevelMapping of ChefWsDTO -->
+	
+	<bean parent="fieldSetLevelMapping">
+        <property name="dtoClass"
+            value="my.recipes.recipecommercewebservices.dto.chef.ChefWsDTO" />
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="name" />
+                <entry key="DEFAULT" value="name,rating" />
+                <entry key="FULL" value="DEFAULT,address(FULL)" />
+            </map>
+        </property>
+    </bean>
+		
+	<!-- fieldSetLevelMapping of FoodWsDTO -->
+	
+	<bean parent="fieldSetLevelMapping">
+        <property name="dtoClass"
+            value="my.recipes.recipecommercewebservices.dto.food.FoodWsDTO" />
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="name" />
+                <entry key="DEFAULT" value="code,name" />
+                <entry key="FULL" value="DEFAULT,kcal" />
+            </map>
+        </property>
+    </bean>
+	
+	
+	<!-- fieldSetLevelMapping of IngredientWsDTO -->
+	
+	<bean parent="fieldSetLevelMapping">
+        <property name="dtoClass"
+            value="my.recipes.recipecommercewebservices.dto.ingredient.IngredientWsDTO" />
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="code" />
+                <entry key="DEFAULT" value="code,quantity" />
+                <entry key="FULL" value="DEFAULT,food(FULL)" />
+            </map>
+        </property>
+    </bean>
+	
 </beans>
