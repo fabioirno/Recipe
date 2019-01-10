@@ -1506,7 +1506,7 @@
 	
 	<bean parent="fieldSetLevelMapping">
         <property name="dtoClass"
-            value="my.recipes.recipecommercewebservices.dto.recipe.RecipeWsDTO" />
+            value="" />
         <property name="levelMapping">
             <map>
                 <entry key="BASIC" value="code,name,rating" />

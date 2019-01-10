@@ -206,7 +206,7 @@
 	
 	<!-- Field Mappings : Recipe -->
 	
-	<bean id="RecipeFieldMapper" parent="fieldMapper">
+	<bean id="recipeFieldMapper" parent="fieldMapper">
 		<property name="sourceClass"
 		          value="my.recipes.facades.data.RecipeData"/>
 		<property name="destClass"
