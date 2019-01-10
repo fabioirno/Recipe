@@ -204,6 +204,22 @@
 		</property>
 	</bean>
 	
+	<!-- Field Mappings : Recipe -->
+	
+	<bean id="RecipeFieldMapper" parent="fieldMapper">
+		<property name="sourceClass"
+		          value="my.recipes.facades.data.RecipeData"/>
+		<property name="destClass"
+		          value="my.recipes.recipecommercewebservices.dto.recipe.RecipeWsDTO"/>
+		<property name="fieldMapping">
+			<map>
+				<entry key="name" value="name"/>
+				<!-- <entry key="ingredients" value="ingredients"/>
+				<entry key="chef" value="chef"/> -->
+			</map>
+		</property>
+	</bean>
+	
 	
 	
 </beans>

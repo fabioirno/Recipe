@@ -15,6 +15,7 @@
 
 		<requires-extension name="cmsoccaddon"/>
 		<requires-extension name="acceleratorwebservicesaddon"/>
+		<requires-extension name="recipefacades"/>
 		<requires-extension name="commercefacades"/>
 		<requires-extension name="commerceservices"/>
 		<requires-extension name="commercewebservicescommons"/>

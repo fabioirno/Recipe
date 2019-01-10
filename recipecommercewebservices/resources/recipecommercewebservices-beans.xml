@@ -166,12 +166,22 @@
 		<property name="chef" type="java.util.List&lt;my.recipes.recipecommercewebservices.dto.chef.ChefWsDTO>" />
 	</bean>
 	
+	<bean class="my.recipes.recipecommercewebservices.dto.recipe.RecipeListWsDTO">
+		<property name="recipes"
+		          type="java.util.List&lt;my.recipes.recipecommercewebservices.dto.recipe.RecipeWsDTO>"/>
+	</bean>
+	
 	<!-- ChefWsDTO -->
 	
 	<bean class="my.recipes.recipecommercewebservices.dto.chef.ChefWsDTO">
 		<property name="name" type="String" />
 		<property name="rating" type="java.lang.Integer" />
 		<property name="address" type="java.util.List&lt;de.hybris.platform.commercewebservicescommons.dto.user.AddressWsDTO>" />
+	</bean>
+	
+	<bean class="my.recipes.recipecommercewebservices.dto.chef.ChefListWsDTO">
+		<property name="chefs"
+		          type="java.util.List&lt;my.recipes.recipecommercewebservices.dto.chef.ChefWsDTO>"/>
 	</bean>
 	
 	<!-- FoodWsDTO -->
@@ -182,6 +192,11 @@
 		<property name="kcal" type="java.lang.Double" />
 	</bean>
 	
+	<bean class="my.recipes.recipecommercewebservices.dto.food.FoodListWsDTO">
+		<property name="foods"
+		          type="my.recipes.recipecommercewebservices.dto.food.FoodWsDTO"/>
+	</bean>
+	
 	<!-- IngredientWsDTO -->
 	
 	<bean class="my.recipes.recipecommercewebservices.dto.ingredient.IngredientWsDTO">
@@ -190,9 +205,9 @@
 		<property name="food" type="my.recipes.recipecommercewebservices.dto.food.FoodWsDTO" />
 	</bean>
 	
-	
-	
-	
-	
+	<bean class="my.recipes.recipecommercewebservices.dto.ingredient.IngredientListWsDTO">
+		<property name="ingredients"
+		          type="java.util.List&lt;my.recipes.recipecommercewebservices.dto.ingredient.IngredientWsDTO>"/>
+	</bean>	
 
 </beans>
