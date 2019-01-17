@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 27-nov-2018 12.16.28                        ---
+ * --- Generated at 17-gen-2019 16.12.22                        ---
  * ----------------------------------------------------------------
  */
 package my.recipes.constants;
