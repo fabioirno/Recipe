@@ -20,11 +20,11 @@
 
 	<!-- custom converters configuration -->
 
-	<bean id="converterPostProcessor" class="my.recipes.conv.ConverterPostProcessor">
+<!-- 	<bean id="converterPostProcessor" class="my.recipes.conv.ConverterPostProcessor">
 		<constructor-arg name="xStream">
 			<bean class="my.recipes.xstream.XmlXStreamFactory" />
 		</constructor-arg>
-	</bean>
+	</bean> -->
 
 	<!-- type converters -->
 	<bean class="de.hybris.platform.commercefacades.xstream.conv.TypeConverterMapping">

@@ -16,8 +16,6 @@
 		<requires-extension name="cmsoccaddon"/>
 		<requires-extension name="acceleratorwebservicesaddon"/>
 		<requires-extension name="recipefacades"/>
-		<requires-extension name="commercefacades"/>
-		<requires-extension name="commerceservices"/>
 		<requires-extension name="commercewebservicescommons"/>
 	
 		<coremodule generated="true" manager="de.hybris.platform.jalo.extension.GenericManager" packageroot="my.recipes"/>
